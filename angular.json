@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "PruebaMasivian"
+  "defaultProject": "PruebaMasivian",
+  "cli": {
+    "analytics": false
+  }
 }
