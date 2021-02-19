@@ -1,0 +1,22 @@
+@import "../../../assets/styles/variables.scss";
+.footer {
+    &::after {
+        content: "";
+        background: url(../../../assets/images/fondo3.png) no-repeat center/cover;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 180px;
+        height: 180px;
+    }
+    &__title {
+        font: bolder 20px "comic";
+        letter-spacing: 1.5px;
+        position: fixed;
+        right: 51px;
+        width: 80px;
+        transform: rotate(-30deg);
+        bottom: 64px;
+        z-index: 2;
+    }
+}

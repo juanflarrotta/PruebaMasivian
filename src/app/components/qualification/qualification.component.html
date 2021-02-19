@@ -1,0 +1,14 @@
+<div class="qualification">
+  <div class="qualification__btns">
+    <button
+      *ngFor="let qualification of qualify; let i = index"
+      (click)="classActive(i, qualification)"
+    >
+      <i class="fas fa-star"></i>
+      <img src="/assets/images/face{{ i + 1 }}.png" alt="" />
+    </button>
+  </div>
+  <div class="qualification__face">
+    <span></span>
+  </div>
+</div>

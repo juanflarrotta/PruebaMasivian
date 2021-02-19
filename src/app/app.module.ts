@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { XkcdService } from './services/xkcd.service';
 import { HeaderComponent } from './components/header/header.component';
 import { ComicComponent } from './components/comic/comic.component';
+import { QualificationComponent } from './components/qualification/qualification.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ComicComponent],
+  declarations: [AppComponent, ComicComponent, QualificationComponent, HeaderComponent, FooterComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [XkcdService],
   bootstrap: [AppComponent],

@@ -1,0 +1,16 @@
+@import "../../../assets/styles/variables.scss";
+.header {
+    @include flex(wrap, row, center, center, center);
+    min-height: 150px;
+    position: relative;
+    &__content {
+        flex: 1;
+    }
+}
+@include break("tablet") {
+    .header {
+        &__content {
+            flex: 100%;
+        }
+    }
+}

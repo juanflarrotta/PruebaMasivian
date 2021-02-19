@@ -5,14 +5,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class XkcdService {
-  constructor(private http: HttpClient) {}
+  url: string;
+  urlComic: string;
+  urlExtensions: string;
+  constructor(private http: HttpClient) {
+    this.url = 'https://any-api.com:8443/';
+    this.urlComic = 'http://xkcd.com/';
+    this.urlExtensions = 'info.0.json';
+  }
   getLengthService() {
-    const path = 'https://any-api.com:8443/http://xkcd.com/info.0.json';
+    const path = '' + this.url + this.urlComic + this.urlExtensions;
     return this.http.get(path);
   }
   getAllService(param: number) {
     const path =
-      'https://any-api.com:8443/http://xkcd.com/' + param + '/info.0.json';
+      '' + this.url + this.urlComic + param + '/' + this.urlExtensions;
     return this.http.get(path);
   }
 }

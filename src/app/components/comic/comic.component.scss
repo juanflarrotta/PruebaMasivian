@@ -1,4 +1,17 @@
-img {
-    width: 100%;
-    max-width: max-content;
+@import "../../../assets/styles/variables.scss";
+.comic {
+    padding-bottom: 180px;
+    &__title {
+        font: bolder 40px "Yusei__Magic";
+        text-align: center;
+        padding: 30px 15px;
+    }
+    &__img {
+        text-align: center;
+        padding: 30px 0 15px 0;
+        img {
+            width: 100%;
+            max-width: fit-content;
+        }
+    }
 }
