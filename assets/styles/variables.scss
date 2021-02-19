@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Yusei__Magic";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../font/YuseiMagic-Regular.ttf") format("woff2");
+}
+@font-face {
+    font-family: "comic";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../font/BADABB__.TTF") format("woff2");
+}
+
+@mixin flex($wrap, $direction, $justify, $align, $text) {
+    display: flex;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    text-align: $text;
+}
+$breakpoints: (
+    "mobile": (
+        max-width: 550px,
+    ),
+    "tablet": (
+        max-width: 768px,
+    ),
+    "desktop": (
+        min-width: 1170px,
+    ),
+) !default;
+@mixin break($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    } @else {
+        @warn "Value `#{$breakpoint}` couldn't be recognized. Breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+//colors
+$color-inactivo: #5f5050;
+$color-active: #ffa400;
