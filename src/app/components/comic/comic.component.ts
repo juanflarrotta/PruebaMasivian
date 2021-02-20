@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { XkcdService } from '../../services/xkcd.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { XkcdService } from '../../services/xkcd.service';
 })
 export class ComicComponent implements OnInit {
   arrayLength: number;
-  arrayImage: string;
+  arrayImage: any;
   arrayTitle: string;
   arrayYear: string;
   random: number;
@@ -37,27 +37,18 @@ export class ComicComponent implements OnInit {
   }
   getAllService(param: number) {
     this.loading = true;
-    this.service
-      .getAllService(param)
-      .pipe(finalize(() => console.log('carga')))
-      .subscribe(
-        (data: any) => {
-          this.arrayImage = data.img;
-          this.arrayTitle = data.title;
-          this.arrayYear = data.year;
-          console.log(data);
-          console.log(this.arrayImage);
-          console.log(this.arrayTitle);
-          this.loading = false;
+    this.service.getAllService(param).subscribe((data: any) => {
+      this.arrayImage = data.img;
+      this.arrayTitle = data.title;
+      this.arrayYear = data.year;
 
-        },
-        (error) => {
-          console.log('Catch clause');
-        },
-        () => {
-          console.log('Finally clause');
-        }
-      );
+      console.log(data);
+      console.log(this.arrayImage);
+      console.log(this.arrayTitle);
+      setTimeout(() => {
+        this.loading = false;
+      }, 2000);
+    });
   }
   nextComic() {
     const btns = document.querySelectorAll('.qualification__btns button');
