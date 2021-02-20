@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { XkcdService } from '../../services/xkcd.service';
 
 @Component({
@@ -10,11 +11,15 @@ export class ComicComponent implements OnInit {
   arrayLength: number;
   arrayImage: string;
   arrayTitle: string;
+  arrayYear: string;
   random: number;
+  loading: boolean;
   constructor(private service: XkcdService) {
     this.arrayLength = 0;
     this.arrayImage = '';
     this.arrayTitle = '';
+    this.arrayYear = '';
+    this.loading = false;
     this.random = 0;
     this.getLengthService();
   }
@@ -31,13 +36,28 @@ export class ComicComponent implements OnInit {
     });
   }
   getAllService(param: number) {
-    this.service.getAllService(param).subscribe((data: any) => {
-      this.arrayImage = data.img;
-      this.arrayTitle = data.title;
-      console.log(data);
-      console.log(this.arrayImage);
-      console.log(this.arrayTitle);
-    });
+    this.loading = true;
+    this.service
+      .getAllService(param)
+      .pipe(finalize(() => console.log('carga')))
+      .subscribe(
+        (data: any) => {
+          this.arrayImage = data.img;
+          this.arrayTitle = data.title;
+          this.arrayYear = data.year;
+          console.log(data);
+          console.log(this.arrayImage);
+          console.log(this.arrayTitle);
+          this.loading = false;
+
+        },
+        (error) => {
+          console.log('Catch clause');
+        },
+        () => {
+          console.log('Finally clause');
+        }
+      );
   }
   nextComic() {
     const btns = document.querySelectorAll('.qualification__btns button');
@@ -51,15 +71,6 @@ export class ComicComponent implements OnInit {
     this.getLengthService();
 
     window.scroll(0, 0);
-    this.loader();
-  }
-  loader() {
-    const comic = document.querySelector('.comic');
-    comic?.classList.add('inactive');
-
-    setTimeout(function () {
-      comic?.classList.remove('inactive');
-    }, 3000);
   }
 
   ngOnInit(): void {}

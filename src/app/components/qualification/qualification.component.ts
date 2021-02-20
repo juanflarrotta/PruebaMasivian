@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class QualificationComponent implements OnInit {
   qualify: string[];
   constructor() {
-    this.qualify = ['Molesto', 'Aburrido', 'Agradable', 'Comico', 'Gracioso'];
+    this.qualify = ['Gracioso', 'Comico', 'Agradable', 'Aburrido', 'Molesto'];
   }
 
   classActive(index: any, name: any) {

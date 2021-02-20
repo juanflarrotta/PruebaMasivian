@@ -1,89 +1,111 @@
 @import "../../../assets/styles/variables.scss";
 .comic {
-    padding-bottom: 180px;
-    &__title {
-        font: bolder 40px "Yusei__Magic";
-        text-align: center;
-        padding: 30px 15px;
+    position: relative;
+    max-width: 600px;
+    padding: 0 20px 0 20px;
+    margin: 0 auto;
+    min-height: calc(100vh - 170px);
+    @include flex(wrap, column, center, center, center);
+    &__date {
+        position: absolute;
+        right: calc((100% - 46px) / 2);
+        top: -26px;
+        span {
+            font: bolder 20px "magic";
+            color: $blanco;
+        }
     }
     &__img {
+        border: 20px solid $naranja;
         text-align: center;
-        padding: 30px 0 15px 0;
+        position: relative;
         img {
             width: 100%;
             max-width: fit-content;
         }
     }
-    &__btn {
+    &__title {
+        background-color: $naranja;
+        padding: 0px 20px 20px 20px;
         text-align: center;
+        flex: 0 1 auto;
+        width: -webkit-fill-available;
+        h3 {
+            font: bold 25px "magic";
+            color: $blanco;
+        }
+    }
+    &__btn {
+        margin: 25px 0;
         button {
-            text-decoration: none;
-            font: 1.25rem "comic";
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font: 16px "magic";
+            color: $naranja;
+            border: none;
+            box-shadow: 0px 0px 35px rgb(255 255 255);
+            transition: all 0.3s ease 0s;
             cursor: pointer;
-            padding: 10px 25px;
-            background-image: linear-gradient(to bottom, #116eb4, #ffffff);
-            border-radius: 16px;
             &:focus {
                 outline: none;
             }
+            &:hover {
+                transform: translateY(-7px);
+                background-color: $naranja;
+                color: $blanco;
+            }
             &:disabled {
-                cursor: initial;
+                background-color: $blanco;
+                color: $gris;
+                box-shadow: none;
+                &:hover {
+                    transform: none;
+                    background-color: $blanco;
+                    color: $gris;
+                    cursor: initial;
+                }
             }
         }
     }
     &__loader {
-        display: none;
-        width: 100%;
-        width: 400px;
-        justify-content: space-between;
-        margin: 0 auto 170px;
-        .circle {
-            width: 50px;
-            height: 50px;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: $negro;
+        background-image: radial-gradient($blanco, rgba(255, 255, 255, 0.2) 2px, transparent 40px),
+            radial-gradient($blanco, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+            radial-gradient($blanco, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+            radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+        background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+        background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+        height: 100%;
+        min-height: 100vh;
+        .box {
+            position: fixed;
+            top: calc((100vh - 23px) / 2);
+            left: calc((100vw - 23px) / 2);
+            width: 23px;
+            height: 23px;
+        }
+        .loader-03 {
+            border: 0.2em solid $naranja;
+            border-bottom-color: transparent;
             border-radius: 50%;
-            background: rgba(231, 76, 60, 0.6);
-            transform: scale(0.2);
+            animation: 1s loader-03 linear infinite;
+            width: 1em;
+            height: 1em;
         }
-        .two {
-            animation-name: moveTwo;
-            animation-duration: 1.8s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-            animation-timing-function: ease-in-out;
-            background: rgba(52, 152, 219, 0.6);
-        }
-        .first {
-            animation-name: moveOne;
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-            animation-timing-function: ease-in-out;
-        }
-        @keyframes moveOne {
-            from {
+
+        @keyframes loader-03 {
+            0% {
+                transform: rotate(0deg);
             }
-            to {
-                background: rgba(50, 150, 150, 0.9);
-                transform: translateX(300px);
+            100% {
+                transform: rotate(360deg);
             }
-        }
-        @keyframes moveTwo {
-            from {
-            }
-            to {
-                background: rgba(200, 50, 100, 0.9);
-                transform: translateX(-300px);
-            }
-        }
-    }
-    &.inactive {
-        .comic__loader {
-            display: flex;
-        }
-        .comic__title,
-        .comic__img {
-            opacity: 0;
-            height: 0;
         }
     }
 }

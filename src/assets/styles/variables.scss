@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Yusei__Magic";
+    font-family: "magic";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
@@ -43,5 +43,8 @@ $breakpoints: (
 }
 
 //colors
-$color-inactivo: #5f5050;
-$color-active: #ffa400;
+$blanco: #fff;
+$negro: #000;
+$amarillo: #f6dc32;
+$naranja: #f33203;
+$gris: #a59e9d;
