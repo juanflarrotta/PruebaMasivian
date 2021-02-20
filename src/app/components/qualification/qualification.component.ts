@@ -15,6 +15,7 @@ export class QualificationComponent implements OnInit {
     const btns = document.querySelectorAll('.qualification__btns button');
     const title = document.querySelector('.qualification__face span');
     const comic = document.querySelector('.comic__img');
+    const comicBtn = document.querySelector('.comic__btn button');
     const numberComic = comic?.getAttribute('id');
 
     btns.forEach((element) => {
@@ -24,6 +25,7 @@ export class QualificationComponent implements OnInit {
     title!.innerHTML = name;
 
     localStorage.setItem('' + numberComic + '', '' + name + '');
+    comicBtn?.removeAttribute('disabled');
   }
 
   ngOnInit(): void {}

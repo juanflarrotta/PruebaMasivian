@@ -14,4 +14,76 @@
             max-width: fit-content;
         }
     }
+    &__btn {
+        text-align: center;
+        button {
+            text-decoration: none;
+            font: 1.25rem "comic";
+            cursor: pointer;
+            padding: 10px 25px;
+            background-image: linear-gradient(to bottom, #116eb4, #ffffff);
+            border-radius: 16px;
+            &:focus {
+                outline: none;
+            }
+            &:disabled {
+                cursor: initial;
+            }
+        }
+    }
+    &__loader {
+        display: none;
+        width: 100%;
+        width: 400px;
+        justify-content: space-between;
+        margin: 0 auto 170px;
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(231, 76, 60, 0.6);
+            transform: scale(0.2);
+        }
+        .two {
+            animation-name: moveTwo;
+            animation-duration: 1.8s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+            background: rgba(52, 152, 219, 0.6);
+        }
+        .first {
+            animation-name: moveOne;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes moveOne {
+            from {
+            }
+            to {
+                background: rgba(50, 150, 150, 0.9);
+                transform: translateX(300px);
+            }
+        }
+        @keyframes moveTwo {
+            from {
+            }
+            to {
+                background: rgba(200, 50, 100, 0.9);
+                transform: translateX(-300px);
+            }
+        }
+    }
+    &.inactive {
+        .comic__loader {
+            display: flex;
+        }
+        .comic__title,
+        .comic__img {
+            opacity: 0;
+            height: 0;
+        }
+    }
 }

@@ -11,7 +11,6 @@ export class ComicComponent implements OnInit {
   arrayImage: string;
   arrayTitle: string;
   random: number;
-
   constructor(private service: XkcdService) {
     this.arrayLength = 0;
     this.arrayImage = '';
@@ -39,6 +38,28 @@ export class ComicComponent implements OnInit {
       console.log(this.arrayImage);
       console.log(this.arrayTitle);
     });
+  }
+  nextComic() {
+    const btns = document.querySelectorAll('.qualification__btns button');
+    const title = document.querySelector('.qualification__face span');
+    const comicBtn = document.querySelector('.comic__btn button');
+    title!.innerHTML = '';
+    comicBtn?.setAttribute('disabled', 'disabled');
+    btns.forEach((element) => {
+      element.classList.remove('active');
+    });
+    this.getLengthService();
+
+    window.scroll(0, 0);
+    this.loader();
+  }
+  loader() {
+    const comic = document.querySelector('.comic');
+    comic?.classList.add('inactive');
+
+    setTimeout(function () {
+      comic?.classList.remove('inactive');
+    }, 3000);
   }
 
   ngOnInit(): void {}
