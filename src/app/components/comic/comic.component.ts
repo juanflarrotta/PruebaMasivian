@@ -47,7 +47,7 @@ export class ComicComponent implements OnInit {
       console.log(this.arrayTitle);
       setTimeout(() => {
         this.loading = false;
-      }, 2000);
+      }, 1000);
     });
   }
   nextComic() {
