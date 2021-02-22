@@ -28,9 +28,7 @@ export class ComicComponent implements OnInit {
     this.service.getLengthService().subscribe((number: any) => {
       const comic = document.querySelector('.comic__img');
       this.arrayLength = number.num;
-      console.log(this.arrayLength);
       this.random = Math.floor(Math.random() * this.arrayLength + 1);
-      console.log(this.random);
       this.getAllService(this.random);
       comic?.setAttribute('id', 'number' + this.random + '');
     });
@@ -42,9 +40,6 @@ export class ComicComponent implements OnInit {
       this.arrayTitle = data.title;
       this.arrayYear = data.year;
 
-      console.log(data);
-      console.log(this.arrayImage);
-      console.log(this.arrayTitle);
       setTimeout(() => {
         this.loading = false;
       }, 1000);
